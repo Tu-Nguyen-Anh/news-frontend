@@ -5,7 +5,6 @@ import { PostFormModal } from "./PostFormModal";
 import { ShareModal } from "./ShareModal";
 import { cn } from "@/utils/cn";
 import { AdminBadge, isAdmin } from "@/utils/adminBadge";
-import { useUserStore } from "@/store/userStore";
 import type { BlogPost } from "@/types";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -69,7 +68,6 @@ export function PostCard({
   onOpenDetail,
 }: PostCardProps) {
   const navigate = useNavigate();
-  const currentUser = useUserStore((s) => s.user);
   const isOwn = currentUserId === post.user_id;
   // Some endpoints may omit `author_username`. Allow parent page to provide a hint.
   const showAdminBadge = isAdmin(post.author_username) || isAdmin(post.author_name) || authorIsAdmin;
